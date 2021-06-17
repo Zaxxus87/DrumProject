@@ -48,13 +48,20 @@ for (var i = 0; i < numberOfDrumButons; i++)
     document.querySelectorAll(".drum")[i].addEventListener("click", function (){
         var buttonInnerHTML = this.innerHTML;
         listener(buttonInnerHTML);
-        
+        buttonAnimation(buttonInnerHTML);
     });
 }
 
 document.addEventListener("keydown", function (event){
     listener(event.key);
+    buttonAnimation(event.key);
 });
 
-
+function buttonAnimation(currentKey) {
+    var activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout (function() {
+        activeButton.classList.remove("pressed");
+    }, 200);
+}
 
